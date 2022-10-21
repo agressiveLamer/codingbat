@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Methods {
+    private List<String> strings;
+
     public int[] makeMiddle(int[] nums) {
         int firstCenterIndex = (nums.length / 2) - 1;
         int secondCenterIndex = (nums.length / 2);
@@ -478,23 +481,23 @@ public class Methods {
 
     public List<Integer> doubling(List<Integer> nums) {
         return nums.stream()
-                .map(n -> n*2).collect(Collectors.toList());
+                .map(n -> n * 2).collect(Collectors.toList());
 
     }
 
     public List<String> copies3(List<String> strings) {
-        return strings.stream().map(e -> e+e+e).collect(Collectors.toList());
+        return strings.stream().map(e -> e + e + e).collect(Collectors.toList());
     }
 
     public List<Integer> square(List<Integer> nums) {
         return nums.stream()
-                .map(n -> n*n)
+                .map(n -> n * n)
                 .collect(Collectors.toList());
     }
 
     public List<String> moreY(List<String> strings) {
         return strings.stream()
-                .map(s -> "y"+s+"y")
+                .map(s -> "y" + s + "y")
                 .collect(Collectors.toList());
     }
 
@@ -505,19 +508,19 @@ public class Methods {
 
     public List<String> addStar(List<String> strings) {
         return strings.stream()
-                .map(s -> s+"*")
+                .map(s -> s + "*")
                 .collect(Collectors.toList());
     }
 
     public List<Integer> math1(List<Integer> nums) {
         return nums.stream()
-                .map(n -> (n+1)*10)
+                .map(n -> (n + 1) * 10)
                 .collect(Collectors.toList());
     }
 
     public List<Integer> rightDigit(List<Integer> nums) {
         return nums.stream()
-                .map(n -> n%10)
+                .map(n -> n % 10)
                 .collect(Collectors.toList());
     }
 
@@ -528,7 +531,73 @@ public class Methods {
     }
 
     public List<Integer> noNeg(List<Integer> nums) {
-        return 
+        return nums.stream()
+                .filter(n -> n >= 0)
+                .collect(Collectors.toList());
     }
+
+    public List<Integer> no9(List<Integer> nums) {
+        return nums.stream()
+                .filter(n -> n % 10 != 9)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> noZ(List<String> strings) {
+        return strings.stream()
+                .filter(s -> !s.contains("z"))
+                .collect(Collectors.toList());
+    }
+
+    public List<String> noLong(List<String> strings) {
+        return strings.stream()
+                .filter(s -> s.length() <= 3)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> noTeen(List<Integer> nums) {
+        return nums.stream().filter(s -> s < 13 || s > 19).collect(Collectors.toList());
+    }
+
+    public List<String> no34(List<String> strings) {
+        return strings.stream()
+                .filter(s -> s.length() < 3 || s.length() > 4)
+                .collect(Collectors.toList());
+    }
+
+
+    public List<Integer> square56(List<Integer> nums) {
+        return nums.stream()
+                .map(n -> n * n + 10)
+                .filter(n -> n % 10 != 6)
+                .filter(n -> n % 10 != 5)
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> two2(List<Integer> nums) {
+        return nums.stream()
+                .map(n -> n * 2)
+                .filter(n -> n % 10 != 2)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> noYY(List<String> strings) {
+        return strings.stream()
+                .map(s -> s + "y")
+                .filter(s -> !s.endsWith("yy"))
+                .filter(s -> !s.startsWith("yy"))
+                .collect(Collectors.toList());
+    }
+
+    public List wordsWithoutList(String[] words, int len) {
+        List <String> list = new ArrayList<>();
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length()==len){
+                continue;
+            }else{
+                list.add(words[i]);
+            }
+        } return list;
+    }
+
 
 }
