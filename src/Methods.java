@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.sun.source.tree.BreakTree;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Methods {
@@ -589,15 +588,71 @@ public class Methods {
     }
 
     public List wordsWithoutList(String[] words, int len) {
-        List <String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         for (int i = 0; i < words.length; i++) {
-            if (words[i].length()==len){
+            if (words[i].length() == len) {
                 continue;
-            }else{
+            } else {
                 list.add(words[i]);
             }
-        } return list;
+        }
+        return list;
     }
 
+    public boolean scoresIncreasing(int[] scores) {
+        boolean scoresIncreasing = true;
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] < scores[i - 1]) {
+                scoresIncreasing = false;
+                break;
+            } else {
+                scoresIncreasing = true;
+            }
+        }
+        return scoresIncreasing;
+    }
+
+    public int scoreUp(String[] key, String[] answers) {
+        int scoreUp = 0;
+        for (int i = 0; i < key.length; i++) {
+            if (key[i].equals(answers[i])) {
+                scoreUp += 4;
+            } else if (answers[i].equals("?")) {
+                scoreUp += 0;
+            } else if (!key[i].equals(answers[i])) {
+                scoreUp--;
+            }
+        }
+        return scoreUp;
+    }
+
+    public boolean scores100(int[] scores) {
+        boolean b = true;
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i - 1] == 100 && scores[i] == 100) {
+                b = true;
+                break;
+            } else {
+                b = false;
+            }
+        }
+        return b;
+    }
+
+    public int wordsCount(String[] words, int len) {
+        int total = 0;
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() == len) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public boolean hasOne(int n) {
+        String nToString = String.valueOf(n);
+        boolean b = (nToString.contains("1")) ? true: false;
+        return b;
+    }
 
 }
